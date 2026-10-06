@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Heitor Henrique, estudante de Ciência da Computação e desenvolvedor de sites e aplicativos." />
+  <meta name="theme-color" content="#080a09" />
+  <title>Heitor Henrique — Desenvolvedor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a09'/%3E%3Cpath d='M15 17v30M49 17v30M15 32h34' stroke='%2300ff88' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #080a09;
+      --panel: #0e1110;
+      --panel-2: #121614;
+      --ink: #f4f5f4;
+      --muted: #888f8b;
+      --faint: #4d5550;
+      --line: rgba(255, 255, 255, 0.1);
+      --green: #00ff88;
+      --green-soft: rgba(0, 255, 136, 0.12);
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "DM Sans", system-ui, sans-serif;
+      --page: min(1180px, calc(100vw - 48px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 68% 4%, rgba(0, 255, 136, 0.085), transparent 30%),
+        linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
+      background-size: auto, 48px 48px, 48px 48px;
+      mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.75) 52%, transparent 100%);
+    }
+
+    ::selection { color: #001b0e; background: var(--green); }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    [id] { scroll-margin-top: 100px; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      background: var(--green);
+      color: #00170c;
+      transform: translateY(-140%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      background: rgba(8,10,9,.72);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: var(--page);
+      height: 68px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+    .brand-mark { color: var(--green); }
+    .brand-ext { color: var(--faint); font-weight: 400; }
+
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-link {
+      position: relative;
+      padding: 8px 12px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .82rem;
+      transition: color .25s ease;
+    }
+    .nav-link::before { content: "~/"; opacity: 0; color: var(--green); transition: opacity .25s ease; }
+    .nav-link:hover, .nav-link.is-active { color: var(--ink); }
+    .nav-link:hover::before, .nav-link.is-active::before { opacity: 1; }
+
+    .menu-button {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 9px 12px;
+      font-family: var(--mono);
+      font-size: .8rem;
+    }
+
+    main { overflow: hidden; }
+    .section {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 116px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding-top: 132px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border-top: 0;
+    }
+
+    .eyebrow, .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px var(--green-soft), 0 0 22px var(--green);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .hero-copy { align-self: center; padding: 40px 0 72px; }
+    .hero h1 {
+      max-width: 1050px;
+      margin: 0;
+      font-family: var(--mono);
+      font-size: clamp(3.2rem, 8.6vw, 8rem);
+      font-weight: 600;
+      line-height: .92;
+      letter-spacing: -.085em;
+    }
+    .hero h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244,245,244,.5);
+    }
+    .hero h1 .accent { color: var(--green); }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      align-items: end;
+      gap: 40px;
+      padding-bottom: 24px;
+    }
+    .hero-intro {
+      max-width: 690px;
+      margin: 0;
+      color: #c4c8c5;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.55;
+    }
+    .hero-actions { display: flex; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: var(--mono);
+      font-size: .84rem;
+      transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .button:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+    .button.primary { color: #00180c; background: var(--green); border-color: var(--green); }
+    .button.primary:hover { color: #00180c; background: #67ffb7; }
+
+    .ticker {
+      width: 100vw;
+      margin-left: calc((100vw - var(--page)) / -2);
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 28px;
+      padding: 14px 0;
+      animation: marquee 22s linear infinite;
+    }
+    .ticker-track span::after { content: "/"; margin-left: 28px; color: var(--green); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .section-kicker strong { color: var(--green); font-weight: 500; }
+    .section-title {
+      max-width: 850px;
+      margin: 0;
+      font-family: var(--mono);
+      font-size: clamp(2.15rem, 5vw, 4.7rem);
+      line-height: 1.05;
+      letter-spacing: -.065em;
+    }
+
+    .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 24px; }
+    .about-copy, .facts { border: 1px solid var(--line); background: rgba(14,17,16,.72); }
+    .about-copy { padding: clamp(26px, 5vw, 58px); }
+    .about-copy p { margin: 0; color: #c5cac7; font-size: clamp(1.15rem, 2.1vw, 1.6rem); }
+    .about-copy p + p { margin-top: 24px; color: var(--muted); font-size: 1rem; }
+    .facts { display: grid; }
+    .fact { padding: 24px; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border-bottom: 0; }
+    .fact dt { color: var(--muted); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; }
+    .fact dd { margin: 5px 0 0; font-family: var(--mono); font-size: 1rem; }
+
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .skill-card {
+      position: relative;
+      min-height: 210px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,10,9,.5);
+      transition: background .25s ease;
+      overflow: hidden;
+    }
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .skill-card:hover { background: var(--green-soft); }
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-index { color: var(--green); font-family: var(--mono); font-size: .74rem; }
+    .skill-card h3 { margin: 0; font-family: var(--mono); font-size: 1.15rem; font-weight: 500; }
+    .skill-card p { margin: 8px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .project-list { display: grid; gap: 12px; }
+    .project-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 70px 1.15fr 1fr auto;
+      gap: 24px;
+      align-items: center;
+      min-height: 150px;
+      padding: 26px 28px;
+      border: 1px solid var(--line);
+      background: rgba(14,17,16,.65);
+      transition: border-color .3s ease, background .3s ease, transform .3s ease;
+    }
+    .project-card:hover { border-color: rgba(0,255,136,.55); background: var(--panel-2); transform: translateX(8px); }
+    .project-number { color: var(--green); font-family: var(--mono); font-size: .8rem; }
+    .project-card h3 { margin: 0; font-family: var(--mono); font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
+    .project-card p { margin: 7px 0 0; color: var(--muted); }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 5px 8px; border: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: .7rem; }
+    .project-status { color: var(--faint); font-family: var(--mono); font-size: .72rem; white-space: nowrap; }
+    .project-status::before { content: "●"; margin-right: 8px; color: var(--green); }
+    .project-empty {
+      padding: clamp(28px, 5vw, 52px);
+      border: 1px solid var(--line);
+      background: rgba(14,17,16,.65);
+    }
+    .project-empty strong { display: block; margin-bottom: 10px; font-family: var(--mono); font-size: 1.2rem; }
+    .project-empty p { max-width: 680px; margin: 0 0 22px; color: var(--muted); }
+    .project-empty .button { width: fit-content; }
+    .github-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin: 56px 0 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .github-heading h3 { margin: 0; font-family: var(--mono); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 500; }
+    .github-heading span { color: var(--faint); font-family: var(--mono); font-size: .72rem; }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .journey-card { padding: 34px; border: 1px solid var(--line); background: rgba(14,17,16,.72); }
+    .journey-card .label { color: var(--green); font-family: var(--mono); font-size: .75rem; }
+    .journey-card h3 { margin: 18px 0 12px; font-family: var(--mono); font-size: 1.45rem; }
+    .journey-card p { margin: 0; color: var(--muted); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .contact-title { margin: 0; font-family: var(--mono); font-size: clamp(3rem, 7.6vw, 7.2rem); line-height: .98; letter-spacing: -.075em; }
+    .contact-title span { color: var(--green); }
+    .contact-side p { margin: 0 0 24px; color: var(--muted); }
+    .contact-links { display: grid; border-top: 1px solid var(--line); }
+    .contact-link { padding: 16px 4px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: .86rem; }
+    .contact-link span:last-child { color: var(--faint); }
+
+    footer {
+      width: var(--page);
+      margin: auto;
+      padding: 28px 0 38px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .72rem;
+    }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+      will-change: transform, width, height;
+      transition: width .24s cubic-bezier(.22,1,.36,1), height .24s cubic-bezier(.22,1,.36,1), opacity .2s ease;
+      mix-blend-mode: difference;
+    }
+    .cursor-dot { position: absolute; width: 4px; height: 4px; left: 50%; top: 50%; transform: translate(-50%,-50%); border-radius: 50%; background: #fff; transition: opacity .2s ease; }
+    .cursor-corner { position: absolute; width: 9px; height: 9px; border-color: #fff; border-style: solid; transition: width .2s ease, height .2s ease; }
+    .cursor-corner:nth-child(2) { top: 0; left: 0; border-width: 2px 0 0 2px; }
+    .cursor-corner:nth-child(3) { top: 0; right: 0; border-width: 2px 2px 0 0; }
+    .cursor-corner:nth-child(4) { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+    .cursor-corner:nth-child(5) { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+    .cursor.is-target .cursor-dot { opacity: 0; }
+
+    @keyframes pulse { 50% { opacity: .4; transform: scale(.8); } }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    @media (pointer: fine) { body, a, button { cursor: none; } }
+    @media (pointer: coarse) { .cursor { display: none; } }
+
+    @media (max-width: 900px) {
+      :root { --page: min(100% - 32px, 720px); }
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        border: 1px solid var(--line);
+        background: #0b0e0c;
+      }
+      .nav-links.is-open { display: flex; }
+      .menu-button { display: block; }
+      .hero-bottom, .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .hero-actions { justify-content: flex-start; }
+      .section-head { grid-template-columns: 1fr; gap: 16px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-card { grid-template-columns: 50px 1fr; }
+      .project-tags, .project-status { grid-column: 2; }
+      .github-heading { align-items: start; flex-direction: column; }
+      .contact-side { max-width: 560px; }
+    }
+
+    @media (max-width: 580px) {
+      :root { --page: calc(100vw - 28px); }
+      .section { padding: 88px 0; }
+      .hero { padding-top: 116px; }
+      .hero-copy { padding: 64px 0; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+      .hero-bottom { gap: 28px; }
+      .skill-grid, .journey { grid-template-columns: 1fr; }
+      .skill-card { min-height: 170px; }
+      .project-card { grid-template-columns: 1fr; padding: 24px; }
+      .project-tags, .project-status { grid-column: 1; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .cursor { display: none; }
+      body, a, button { cursor: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="cursor" aria-hidden="true">
+    <span class="cursor-dot"></span><span class="cursor-corner"></span><span class="cursor-corner"></span><span class="cursor-corner"></span><span class="cursor-corner"></span>
+  </div>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand cursor-target" href="#inicio" aria-label="Voltar ao início"><span class="brand-mark">hh</span><span>heitor</span><span class="brand-ext">.dev</span></a>
+      <button class="menu-button cursor-target" type="button" aria-expanded="false" aria-controls="nav-links">menu</button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link cursor-target is-active" href="#inicio">início</a>
+        <a class="nav-link cursor-target" href="#sobre">sobre</a>
+        <a class="nav-link cursor-target" href="#habilidades">stack</a>
+        <a class="nav-link cursor-target" href="#projetos">projetos</a>
+        <a class="nav-link cursor-target" href="#contato">contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="section hero" id="inicio" data-section>
+      <div class="eyebrow reveal"><span class="eyebrow-dot"></span> disponível para criar, aprender e colaborar</div>
+      <div class="hero-copy reveal">
+        <h1>Heitor<br><span class="outline">Henrique</span><span class="accent">.</span></h1>
+      </div>
+      <div>
+        <div class="hero-bottom reveal">
+          <p class="hero-intro">Desenvolvo sites e aplicativos e gosto de transformar problemas reais em soluções simples, úteis e bem construídas.</p>
+          <div class="hero-actions">
+            <a class="button primary cursor-target" href="#projetos">ver projetos</a>
+            <a class="button cursor-target" href="#contato">falar comigo</a>
+          </div>
+        </div>
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span>JavaScript</span><span>React</span><span>Python</span><span>C</span><span>C++</span><span>HTML</span><span>CSS</span><span>Hardware</span>
+            <span>JavaScript</span><span>React</span><span>Python</span><span>C</span><span>C++</span><span>HTML</span><span>CSS</span><span>Hardware</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre" data-section>
+      <div class="section-head reveal">
+        <div class="section-kicker"><strong>01</strong> sobre mim</div>
+        <h2 class="section-title">Tecnologia para resolver — da interface à máquina.</h2>
+      </div>
+      <div class="about-grid reveal">
+        <article class="about-copy">
+          <p>Tenho 21 anos, estudo Ciência da Computação e também faço curso técnico em Administração. Essa mistura me ajuda a pensar tanto na tecnologia quanto no problema que ela precisa resolver.</p>
+          <p>Além do desenvolvimento, tenho facilidade com a parte física de computadores — montagem, manutenção e diagnóstico. Gosto de entender o sistema inteiro, não apenas uma camada.</p>
+        </article>
+        <dl class="facts">
+          <div class="fact"><dt>Foco</dt><dd>Web & aplicativos</dd></div>
+          <div class="fact"><dt>Formação</dt><dd>Ciência da Computação</dd></div>
+          <div class="fact"><dt>Complemento</dt><dd>Técnico em Administração</dd></div>
+          <div class="fact"><dt>Também entendo</dt><dd>Hardware & manutenção</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="habilidades" data-section>
+      <div class="section-head reveal">
+        <div class="section-kicker"><strong>02</strong> tecnologia</div>
+        <h2 class="section-title">Ferramentas que uso para tirar ideias do papel.</h2>
+      </div>
+      <div class="skill-grid reveal">
+        <article class="skill-card cursor-target"><span class="skill-index">[01]</span><div><h3>JavaScript</h3><p>Interatividade e lógica para produtos web.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[02]</span><div><h3>React</h3><p>Interfaces organizadas em componentes.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[03]</span><div><h3>Python</h3><p>Automação, lógica e experimentação.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[04]</span><div><h3>C / C++</h3><p>Fundamentos, desempenho e baixo nível.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[05]</span><div><h3>HTML</h3><p>Estrutura semântica e acessível.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[06]</span><div><h3>CSS</h3><p>Layouts responsivos, identidade e movimento.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[07]</span><div><h3>Hardware</h3><p>Montagem, manutenção e diagnóstico.</p></div></article>
+        <article class="skill-card cursor-target"><span class="skill-index">[08]</span><div><h3>Resolução</h3><p>Problemas complexos em passos claros.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="projetos" data-section>
+      <div class="section-head reveal">
+        <div class="section-kicker"><strong>03</strong> trabalhos</div>
+        <h2 class="section-title">Projetos para explorar.</h2>
+      </div>
+      <div class="project-list reveal">
+        <a class="project-card cursor-target" href="https://manguebeatfic.portalsgi.dev.br/" target="_blank" rel="noreferrer" aria-label="Abrir o projeto MangueBeatFic">
+          <span class="project-number">[01]</span>
+          <div><h3>MangueBeatFic</h3><p>Portal para transparência, gestão contratual e atendimento.</p></div>
+          <div class="project-tags"><span class="tag">Web</span><span class="tag">Portal</span><span class="tag">Gestão</span></div>
+          <span class="project-status">abrir projeto</span>
+        </a>
+        <a class="project-card cursor-target" href="/mybills/" target="_blank" rel="noreferrer" aria-label="Abrir a versão web do MyBills">
+          <span class="project-number">[02]</span>
+          <div><h3>MyBills</h3><p>Planejamento financeiro pessoal com receitas, despesas, projeções e simulador.</p></div>
+          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Offline-first</span><span class="tag">Finanças</span></div>
+          <span class="project-status">abrir versão web</span>
+        </a>
+      </div>
+      <div class="github-heading reveal">
+        <h3>Outros repositórios públicos</h3>
+        <span>sincronizado com GitHub</span>
+      </div>
+      <div class="project-list reveal" id="github-projects" aria-live="polite" aria-busy="true">
+        <div class="project-empty"><strong>Buscando projetos...</strong><p>Conectando ao perfil público de Heitor no GitHub.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="formacao" data-section>
+      <div class="section-head reveal">
+        <div class="section-kicker"><strong>04</strong> trajetória</div>
+        <h2 class="section-title">Aprendizado técnico com visão de negócio.</h2>
+      </div>
+      <div class="journey reveal">
+        <article class="journey-card"><span class="label">EM CURSO</span><h3>Ciência da Computação</h3><p>Fundamentos de computação, algoritmos, desenvolvimento e resolução estruturada de problemas.</p></article>
+        <article class="journey-card"><span class="label">EM CURSO</span><h3>Técnico em Administração</h3><p>Organização, processos e uma visão mais ampla de como soluções geram valor para pessoas e negócios.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="contato" data-section>
+      <div class="contact-wrap reveal">
+        <h2 class="contact-title">Vamos criar algo <span>útil.</span></h2>
+        <div class="contact-side">
+          <p>Tem uma ideia, projeto ou oportunidade? Entre em contato pelo canal que for melhor para você.</p>
+          <div class="contact-links">
+            <a class="contact-link cursor-target" href="mailto:heitorhenriqque.cs@gmail.com"><span>Email</span><span>heitorhenriqque.cs@gmail.com</span></a>
+            <a class="contact-link cursor-target" href="https://github.com/heitorhenriqquecs-collab" target="_blank" rel="noreferrer"><span>GitHub</span><span>abrir perfil</span></a>
+            <a class="contact-link cursor-target" href="https://www.linkedin.com/in/heitor-henrique-1b227a341/" target="_blank" rel="noreferrer"><span>LinkedIn</span><span>abrir perfil</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© <span id="year"></span> Heitor Henrique</span><span>feito com curiosidade + código</span></footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'fechar' : 'menu';
+    });
+    document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = 'menu';
+    }));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .13 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${id}` || (id === 'formacao' && link.getAttribute('href') === '#sobre'));
+        });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    document.querySelectorAll('[data-section]').forEach(section => sectionObserver.observe(section));
+
+    const projectsRoot = document.getElementById('github-projects');
+    const githubProfile = 'https://github.com/heitorhenriqquecs-collab';
+
+    const makeTag = label => {
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = label;
+      return tag;
+    };
+
+    const renderProjects = repos => {
+      projectsRoot.replaceChildren();
+      projectsRoot.setAttribute('aria-busy', 'false');
+
+      if (!repos.length) {
+        const empty = document.createElement('div');
+        empty.className = 'project-empty';
+        const title = document.createElement('strong');
+        title.textContent = 'Nenhum repositório público encontrado agora.';
+        const copy = document.createElement('p');
+        copy.textContent = 'Quando um projeto for publicado no perfil, ele aparecerá automaticamente aqui.';
+        const link = document.createElement('a');
+        link.className = 'button cursor-target';
+        link.href = githubProfile;
+        link.target = '_blank';
+        link.rel = 'noreferrer';
+        link.textContent = 'acompanhar no GitHub';
+        empty.append(title, copy, link);
+        projectsRoot.append(empty);
+        return;
+      }
+
+      repos.forEach((repo, index) => {
+        const card = document.createElement('a');
+        card.className = 'project-card cursor-target';
+        card.href = repo.html_url;
+        card.target = '_blank';
+        card.rel = 'noreferrer';
+        card.setAttribute('aria-label', `Abrir ${repo.name} no GitHub`);
+
+        const number = document.createElement('span');
+        number.className = 'project-number';
+        number.textContent = `[${String(index + 3).padStart(2, '0')}]`;
+
+        const text = document.createElement('div');
+        const heading = document.createElement('h3');
+        heading.textContent = repo.name.replaceAll('-', ' ');
+        const description = document.createElement('p');
+        description.textContent = repo.description || 'Repositório de projeto e estudos de desenvolvimento.';
+        text.append(heading, description);
+
+        const tags = document.createElement('div');
+        tags.className = 'project-tags';
+        if (repo.language) tags.append(makeTag(repo.language));
+        (repo.topics || []).slice(0, 3).forEach(topic => tags.append(makeTag(topic)));
+        if (repo.fork) tags.append(makeTag('fork'));
+        if (repo.archived) tags.append(makeTag('arquivado'));
+
+        const status = document.createElement('span');
+        status.className = 'project-status';
+        status.textContent = 'ver no GitHub';
+        card.append(number, text, tags, status);
+        projectsRoot.append(card);
+      });
+    };
+
+    const loadProjects = async () => {
+      try {
+        const repos = [];
+        for (let page = 1; page <= 10; page += 1) {
+          const response = await fetch(`https://api.github.com/users/heitorhenriqquecs-collab/repos?per_page=100&sort=updated&page=${page}`, {
+            headers: { Accept: 'application/vnd.github+json' }
+          });
+          if (!response.ok) throw new Error('GitHub indisponível');
+          const batch = await response.json();
+          repos.push(...batch);
+          if (batch.length < 100) break;
+        }
+        renderProjects(repos);
+      } catch {
+        projectsRoot.setAttribute('aria-busy', 'false');
+        projectsRoot.innerHTML = '<div class="project-empty"><strong>Não foi possível consultar o GitHub agora.</strong><p>Os projetos continuam disponíveis diretamente no perfil.</p><a class="button cursor-target" href="https://github.com/heitorhenriqquecs-collab" target="_blank" rel="noreferrer">abrir GitHub</a></div>';
+      }
+    };
+    loadProjects();
+
+    if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+      const cursor = document.querySelector('.cursor');
+      const state = { x: innerWidth / 2, y: innerHeight / 2, cx: innerWidth / 2, cy: innerHeight / 2, w: 28, h: 28, target: null };
+      window.addEventListener('mousemove', event => { state.x = event.clientX; state.y = event.clientY; cursor.style.opacity = '1'; });
+      document.documentElement.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+
+      document.addEventListener('mouseover', event => {
+        const target = event.target.closest('.cursor-target');
+        if (!target || target === state.target) return;
+        state.target = target;
+        cursor.classList.add('is-target');
+      });
+      document.addEventListener('mouseout', event => {
+        if (!state.target || state.target.contains(event.relatedTarget)) return;
+        state.target = null;
+        state.w = 28;
+        state.h = 28;
+        cursor.classList.remove('is-target');
+      });
+
+      const animateCursor = () => {
+        let tx = state.x, ty = state.y;
+        if (state.target) {
+          const rect = state.target.getBoundingClientRect();
+          tx = rect.left + rect.width / 2;
+          ty = rect.top + rect.height / 2;
+          state.w = rect.width + 16;
+          state.h = rect.height + 14;
+        }
+        state.cx += (tx - state.cx) * .22;
+        state.cy += (ty - state.cy) * .22;
+        cursor.style.width = `${state.w}px`;
+        cursor.style.height = `${state.h}px`;
+        cursor.style.transform = `translate3d(${state.cx - state.w / 2}px, ${state.cy - state.h / 2}px, 0) rotate(${state.target ? 0 : 45}deg)`;
+        requestAnimationFrame(animateCursor);
+      };
+      animateCursor();
+    }
+  </script>
+</body>
+</html>
