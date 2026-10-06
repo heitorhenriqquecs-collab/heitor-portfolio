@@ -17,7 +17,6 @@ Acesse a versão publicada em [heitt.portalsgi.dev.br](https://heitt.portalsgi.d
 ## Projetos apresentados
 
 - [MyBills Web](https://heitt.portalsgi.dev.br/mybills/)
-- [MangueBeatFic](https://manguebeatfic.portalsgi.dev.br/)
 
 ## Executar localmente
 
