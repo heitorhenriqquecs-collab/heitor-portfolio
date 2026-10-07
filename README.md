@@ -17,6 +17,7 @@ Acesse a versão publicada em [heitt.portalsgi.dev.br](https://heitt.portalsgi.d
 ## Projetos apresentados
 
 - [MyBills Web](https://heitt.portalsgi.dev.br/mybills/)
+- [SGPI](https://1.portalsgi.dev.br/)
 
 ## Executar localmente
 
