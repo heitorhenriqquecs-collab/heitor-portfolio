@@ -21,3 +21,5 @@ Acesse a versão publicada em [heitt.portalsgi.dev.br](https://heitt.portalsgi.d
 ## Executar localmente
 
 Abra o arquivo `index.html` no navegador ou utilize um servidor HTTP local.
+
+As regras de manutenção e qualidade do projeto estão documentadas em `AGENTS.md`.
