@@ -46,3 +46,12 @@ footer{border-color:#394651;color:#aebdc5}.legal-links a{color:#b4c0c7}
 .privacy-notice{border-color:#52616b;background:#27313a;box-shadow:0 20px 55px #0007}.privacy-notice p{color:#e7eef1}
 .skip-link{background:#45e85f;color:#102016}:focus-visible{outline-color:#45e85f}
 @media(max-width:900px){.nav-links{background:#171f25;border-color:#394651}}
+
+/* Títulos com desenho editorial, mas sem comprimir os caracteres. */
+.brand{letter-spacing:-.02em}
+.hero h1{letter-spacing:-.045em;line-height:1}
+.section-title{letter-spacing:-.025em;line-height:1.15}
+.project-card h3{letter-spacing:-.02em;line-height:1.18}
+.journey-card h3{letter-spacing:-.015em}
+.contact-title{letter-spacing:-.04em;line-height:1.03}
+.hero-intro,.about-copy p{letter-spacing:normal}
