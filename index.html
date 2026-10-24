@@ -6,9 +6,6 @@
   <meta name="description" content="Portfólio de Heitor Henrique, estudante de Ciência da Computação e desenvolvedor de sites e aplicativos." />
   <meta name="theme-color" content="#080a09" />
   <title>Heitor Henrique — Desenvolvedor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080a09'/%3E%3Cpath d='M15 17v30M49 17v30M15 32h34' stroke='%2300ff88' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E" />
   <style>
     :root {
@@ -17,12 +14,12 @@
       --panel-2: #121614;
       --ink: #f4f5f4;
       --muted: #888f8b;
-      --faint: #4d5550;
+      --faint: #9aa19d;
       --line: rgba(255, 255, 255, 0.1);
       --green: #00ff88;
       --green-soft: rgba(0, 255, 136, 0.12);
-      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      --sans: "DM Sans", system-ui, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --page: min(1180px, calc(100vw - 48px));
     }
 
@@ -57,6 +54,7 @@
     a { color: inherit; text-decoration: none; }
     button { color: inherit; font: inherit; }
     [id] { scroll-margin-top: 100px; }
+    :focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
 
     .skip-link {
       position: fixed;
@@ -169,8 +167,8 @@
       letter-spacing: -.085em;
     }
     .hero h1 .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(244,245,244,.5);
+      color: #bfc5c1;
+      -webkit-text-stroke: 0;
     }
     .hero h1 .accent { color: var(--green); }
 
@@ -384,6 +382,23 @@
     .cursor-corner:nth-child(5) { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
     .cursor.is-target .cursor-dot { opacity: 0; }
 
+    .privacy-notice {
+      position: fixed;
+      z-index: 80;
+      right: 20px;
+      bottom: 20px;
+      width: min(430px, calc(100vw - 40px));
+      padding: 18px;
+      border: 1px solid rgba(0, 255, 136, .35);
+      background: #0e1110;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+    }
+    .privacy-notice p { margin: 0 0 14px; color: #fff; background:#0e1110; font-size: .88rem; }
+    .privacy-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .privacy-actions .button { min-height: 42px; }
+    .legal-links { display: flex; flex-wrap: wrap; gap: 14px; }
+    .legal-links a { color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+
     @keyframes pulse { 50% { opacity: .4; transform: scale(.8); } }
     @keyframes marquee { to { transform: translateX(-50%); } }
 
@@ -483,12 +498,12 @@
     <section class="section" id="sobre" data-section>
       <div class="section-head reveal">
         <div class="section-kicker"><strong>01</strong> sobre mim</div>
-        <h2 class="section-title">Tecnologia para resolver — da interface à máquina.</h2>
+        <h2 class="section-title">Tecnologia para resolver problemas, da interface à máquina.</h2>
       </div>
       <div class="about-grid reveal">
         <article class="about-copy">
           <p>Tenho 21 anos, estudo Ciência da Computação e também faço curso técnico em Administração. Essa mistura me ajuda a pensar tanto na tecnologia quanto no problema que ela precisa resolver.</p>
-          <p>Além do desenvolvimento, tenho facilidade com a parte física de computadores — montagem, manutenção e diagnóstico. Gosto de entender o sistema inteiro, não apenas uma camada.</p>
+          <p>Também trabalho bem com montagem, manutenção e diagnóstico de computadores. Entender o conjunto me ajuda a encontrar soluções mais consistentes.</p>
         </article>
         <dl class="facts">
           <div class="fact"><dt>Foco</dt><dd>Web & aplicativos</dd></div>
@@ -522,21 +537,39 @@
         <h2 class="section-title">Projetos para explorar.</h2>
       </div>
       <div class="project-list reveal">
-        <a class="project-card cursor-target" href="/mybills/" target="_blank" rel="noreferrer" aria-label="Abrir a versão web do MyBills">
+        <a class="project-card cursor-target" href="https://manguebeatfic.portalsgi.dev.br/" target="_blank" rel="noreferrer" aria-label="Abrir o projeto MangueBeatFic">
           <span class="project-number">[01]</span>
+          <div><h3>MangueBeatFic</h3><p>Portal para transparência, gestão contratual e atendimento.</p></div>
+          <div class="project-tags"><span class="tag">Web</span><span class="tag">Portal</span><span class="tag">Gestão</span></div>
+          <span class="project-status">abrir projeto</span>
+        </a>
+        <a class="project-card cursor-target" href="/mybills/" target="_blank" rel="noreferrer" aria-label="Abrir a versão web do MyBills">
+          <span class="project-number">[02]</span>
           <div><h3>MyBills</h3><p>Planejamento financeiro pessoal com receitas, despesas, projeções e simulador.</p></div>
           <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Offline-first</span><span class="tag">Finanças</span></div>
           <span class="project-status">abrir versão web</span>
         </a>
-        <a class="project-card cursor-target" href="https://1.portalsgi.dev.br/" target="_blank" rel="noreferrer" aria-label="Abrir a demonstração do SGPI">
-          <span class="project-number">[02]</span>
-          <div><h3>SGPI</h3><p>Gestão de projetos integrados com painéis, Kanban, calendário e perfis demonstrativos.</p></div>
-          <div class="project-tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Gestão</span></div>
-          <span class="project-status">abrir demonstração</span>
+        <a class="project-card cursor-target" href="/teamlink-demo/" target="_blank" rel="noreferrer" aria-label="Experimentar a demonstração interativa do TeamLink">
+          <span class="project-number">[03]</span>
+          <div><h3>TeamLink</h3><p>Experimente um espaço de trabalho fictício: distribua tarefas, mova cartões e explore ferramentas de gestão.</p></div>
+          <div class="project-tags"><span class="tag">Demo interativa</span><span class="tag">Kanban</span><span class="tag">Equipes</span></div>
+          <span class="project-status">experimentar demo</span>
+        </a>
+        <a class="project-card cursor-target" href="https://2.portalsgi.dev.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir o jogo Onze Lendas">
+          <span class="project-number">[04]</span>
+          <div><h3>Onze Lendas</h3><p>Uma carreira de futebol construída com cartas, escolhas e evolução a cada temporada.</p></div>
+          <div class="project-tags"><span class="tag">Jogo</span><span class="tag">Interativo</span><span class="tag">Web</span></div>
+          <span class="project-status">jogar</span>
+        </a>
+        <a class="project-card cursor-target" href="https://geometry-dash-web.heitorhenriqque-cs.chatgpt.site/" target="_blank" rel="noopener noreferrer" aria-label="Abrir o jogo Pulse Dash">
+          <span class="project-number">[05]</span>
+          <div><h3>Pulse Dash</h3><p>Jogo independente de ritmo e plataforma para navegador, com desafios de precisão e tempo.</p></div>
+          <div class="project-tags"><span class="tag">Jogo</span><span class="tag">Ritmo</span><span class="tag">Web</span></div>
+          <span class="project-status">jogar</span>
         </a>
       </div>
       <div class="github-heading reveal">
-        <h3>Outros repositórios públicos</h3>
+        <h3>Código no GitHub</h3>
         <span>sincronizado com GitHub</span>
       </div>
       <div class="project-list reveal" id="github-projects" aria-live="polite" aria-busy="true">
@@ -559,7 +592,7 @@
       <div class="contact-wrap reveal">
         <h2 class="contact-title">Vamos criar algo <span>útil.</span></h2>
         <div class="contact-side">
-          <p>Tem uma ideia, projeto ou oportunidade? Entre em contato pelo canal que for melhor para você.</p>
+          <p>Se quiser conversar sobre uma oportunidade ou um projeto, use o canal que preferir.</p>
           <div class="contact-links">
             <a class="contact-link cursor-target" href="mailto:heitorhenriqque.cs@gmail.com"><span>Email</span><span>heitorhenriqque.cs@gmail.com</span></a>
             <a class="contact-link cursor-target" href="https://github.com/heitorhenriqquecs-collab" target="_blank" rel="noreferrer"><span>GitHub</span><span>abrir perfil</span></a>
@@ -570,11 +603,26 @@
     </section>
   </main>
 
-  <footer><span>© <span id="year"></span> Heitor Henrique</span><span>feito com curiosidade + código</span></footer>
+  <footer><span>© <span id="year"></span> Heitor Henrique</span><span class="legal-links"><a href="/legal/">Privacidade, termos e reembolso</a><a href="mailto:heitorhenriqque.cs@gmail.com">Contato</a></span></footer>
+
+  <aside class="privacy-notice" id="privacyNotice" aria-label="Aviso de privacidade" hidden>
+    <p>Este portfólio não usa publicidade nem análise de comportamento. Algumas demonstrações salvam preferências e dados inseridos somente no seu aparelho.</p>
+    <div class="privacy-actions"><button class="button primary cursor-target" id="privacyDismiss" type="button">Entendi</button><a class="button cursor-target" href="/legal/">Ler política</a></div>
+  </aside>
 
   <script>
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.getElementById('year').textContent = new Date().getFullYear();
+    const privacyNotice = document.getElementById('privacyNotice');
+    try {
+      privacyNotice.hidden = localStorage.getItem('heitor-privacy-notice-v1') === 'acknowledged';
+    } catch {
+      privacyNotice.hidden = false;
+    }
+    document.getElementById('privacyDismiss').addEventListener('click', () => {
+      try { localStorage.setItem('heitor-privacy-notice-v1', 'acknowledged'); } catch {}
+      privacyNotice.hidden = true;
+    });
 
     const menuButton = document.querySelector('.menu-button');
     const navLinks = document.querySelector('.nav-links');
@@ -652,7 +700,7 @@
 
         const number = document.createElement('span');
         number.className = 'project-number';
-        number.textContent = `[${String(index + 3).padStart(2, '0')}]`;
+        number.textContent = `[${String(index + 6).padStart(2, '0')}]`;
 
         const text = document.createElement('div');
         const heading = document.createElement('h3');

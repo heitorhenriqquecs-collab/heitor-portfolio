@@ -1,26 +1,17 @@
-# Portfólio - Heitor Henrique
+# Portfólio — Heitor Henrique
 
-Portfólio profissional de Heitor Henrique Tavares dos Santos, estudante de Ciência da Computação e desenvolvedor de sites e aplicativos.
+Portfólio público de Heitor Henrique Tavares dos Santos, estudante de Ciência da Computação e desenvolvedor de sites e aplicativos.
 
-## Demonstração
+## Versão publicada
 
-Acesse a versão publicada em [heitt.portalsgi.dev.br](https://heitt.portalsgi.dev.br/).
+[heitt.portalsgi.dev.br](https://heitt.portalsgi.dev.br/)
 
-## Destaques
+O repositório inclui a página principal e as demonstrações web do MyBills e do TeamLink. Outros projetos são acessados pelos links de cada card.
 
-- interface responsiva com estética inspirada em terminal;
-- cursor interativo e animações com suporte a movimento reduzido;
-- seção de projetos conectada ao perfil público do GitHub;
-- apresentação de competências, formação e contatos profissionais;
-- HTML, CSS e JavaScript sem dependências de execução.
+## Privacidade e acessibilidade
 
-## Projetos apresentados
+O portfólio não usa anúncios, Google Analytics ou pixels de rastreamento. Preferências estritamente necessárias ficam no navegador e são descritas em [legal/index.html](legal/index.html). As páginas foram revisadas para navegação por teclado, foco visível, contraste e textos alternativos.
 
-- [MyBills Web](https://heitt.portalsgi.dev.br/mybills/)
-- [SGPI](https://1.portalsgi.dev.br/)
+## Licença
 
-## Executar localmente
-
-Abra o arquivo `index.html` no navegador ou utilize um servidor HTTP local.
-
-As regras de manutenção e qualidade do projeto estão documentadas em `AGENTS.md`.
+O conteúdo é disponibilizado para consulta de portfólio sob os termos de [LICENSE.md](LICENSE.md). Marcas e componentes de terceiros permanecem sujeitos aos direitos de seus respectivos titulares.
