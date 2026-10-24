@@ -28,3 +28,21 @@ footer{border-color:#d5dbd0;color:#617166;font-family:var(--sans)}.legal-links a
 .reveal,.reveal.is-visible{opacity:1;transform:none;transition:none}
 @media(max-width:900px){:root{--page:min(100% - 36px,720px)}.nav-links{top:76px;background:#f5f3ec}.hero::after{right:0;top:48%;width:260px;height:260px;font-size:90px;opacity:.55}.hero h1{font-size:clamp(68px,12vw,110px)}.hero-bottom,.about-grid,.contact-wrap{grid-template-columns:1fr}.section-head{grid-template-columns:1fr;gap:18px}.about-copy{padding-right:0;border-right:0}.facts{padding-left:0}.project-card{grid-template-columns:52px 1fr}.project-tags,.project-status{grid-column:2}#habilidades,#contato{padding-inline:max(18px,calc((100vw - 720px)/2))}}
 @media(max-width:580px){:root{--page:calc(100vw - 36px)}.section{padding:85px 0}.hero{min-height:88svh;padding-top:117px}.hero::after{top:47%;width:180px;height:180px;font-size:63px}.hero-copy{padding:45px 0}.hero h1{font-size:clamp(53px,15vw,82px)}.hero-intro{font-size:18px}.hero-bottom{gap:24px}.hero-actions{width:100%}.hero-actions .button{flex:1;padding-inline:12px}.section-title{font-size:38px}.project-card{grid-template-columns:1fr;min-height:0;padding:26px 3px}.project-tags,.project-status{grid-column:1}.skill-grid,.journey{grid-template-columns:1fr}#habilidades,#contato{padding-inline:18px}.contact-title{font-size:clamp(54px,15vw,88px)}}
+
+/* Marca padrão: grafite, azul ardósia e verde vivo. */
+:root{color-scheme:dark;--bg:#1d242b;--panel:#27313a;--panel-2:#202a32;--ink:#eef3f6;--muted:#b4c0c7;--faint:#9baab3;--line:#394651;--green:#45e85f;--green-soft:#183525}
+body{background:#1d242b;color:#eef3f6}::selection{background:#45e85f;color:#102016}
+.topbar{border-color:#394651;background:rgba(23,31,37,.96)}.brand-mark{background:#45e85f;color:#102016}.brand-ext{color:#a6b6bf}.nav-link{color:#bdc9cf}.nav-link:hover,.nav-link.is-active{color:#66ed7b}.menu-button{border-color:#52616b;background:#27313a;color:#eef3f6}
+.section{border-color:#394651}.hero::after{background:#27313a;color:#3d5158}.eyebrow,.section-kicker{color:#b4c0c7}.eyebrow-dot{background:#45e85f}.hero h1 .outline,.hero h1 .accent{color:#45e85f}.hero-intro{color:#c3d0d6}
+.button{border-color:#52616b;background:#27313a;color:#eef3f6}.button:hover{border-color:#45e85f;color:#a6f6b4}.button.primary{border-color:#45e85f;background:#45e85f;color:#102016}.button.primary:hover{border-color:#7af48d;background:#7af48d;color:#102016}
+.ticker{border-color:#394651;color:#aebdc5}.ticker-track span::after{color:#45e85f}.section-kicker strong{color:#45e85f}
+.about-grid{border-color:#394651}.about-copy{border-color:#394651}.about-copy p{color:#e3ecef}.about-copy p+p{color:#b4c0c7}.fact{border-color:#394651}.fact dd{color:#e6eef1}
+#habilidades{background:#182d21}#habilidades .section-kicker,#habilidades .section-kicker strong{color:#91f5a0}#habilidades .section-title{color:#f0f5f1}.skill-grid,.skill-card{border-color:#3e5f49}.skill-card:hover{background:#213a2b}.skill-card::before{background:#45e85f}.skill-index{color:#8cf69d}.skill-card p{color:#bfd2c5}
+.project-list,.project-card{border-color:#394651}.project-card:hover{border-color:#526a5c;background:#24332b}.project-number{color:#45e85f}.project-card p{color:#b4c0c7}.tag{border-color:#53616b;color:#c3cfd5}.project-status{color:#c7d2d6}.project-status::before{color:#45e85f}
+.project-empty{border-color:#394651;background:#27313a}.project-empty p{color:#b4c0c7}.github-heading{border-color:#394651}
+.journey{border-color:#394651}.journey-card{border-color:#394651;background:#27313a}.journey-card .label{color:#45e85f}.journey-card p{color:#b4c0c7}
+#contato{background:#183525;color:#eef7ef}.contact-title span{color:#45e85f}.contact-side p{color:#c3d8c9}.contact-links,.contact-link{border-color:#42664b}.contact-link span:last-child{color:#c8e2cc}
+footer{border-color:#394651;color:#aebdc5}.legal-links a{color:#b4c0c7}
+.privacy-notice{border-color:#52616b;background:#27313a;box-shadow:0 20px 55px #0007}.privacy-notice p{color:#e7eef1}
+.skip-link{background:#45e85f;color:#102016}:focus-visible{outline-color:#45e85f}
+@media(max-width:900px){.nav-links{background:#171f25;border-color:#394651}}
